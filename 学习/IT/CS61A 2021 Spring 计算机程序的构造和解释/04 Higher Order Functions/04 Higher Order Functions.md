@@ -80,3 +80,14 @@ from math import sin, cos, pi
 h = add_func(sin, cos)
 h(pi / 4)
 ```
+
+## 思考
+可不可以写一个函数`if_func(1/x, x > 0, 0)`去代替条件语句`1/x if x > 0 else 0`
+
+不可以，因为调用函数时需要先计算操作数，如1/x。实际上条件语句是先判断条件x>0再计算1/x或0。
+但可以传入一个函数去代替，如：
+```python
+if_func(lambda: 1/x, x > 0, lambda: 0)
+```
+
+无参数lambda： 形实转换函数(thunks)
