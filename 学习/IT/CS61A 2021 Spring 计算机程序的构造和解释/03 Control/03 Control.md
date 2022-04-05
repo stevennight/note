@@ -10,21 +10,52 @@ def sum_square(x, y):
 z = sum_square(3, 4)
 ```
 
+<div style="border: 1px solid #eee; padding: 10px; margin: 10px 0;">
+全局：<br>
+square -> def square(x) 全局<br>
+sum_square -> def sum_square(x,y) 全局
+
+f1：<br>
+x=3<br>
+y=4<br>
+return
+
+f2：<br>
+x=3<br>
+return 9
+
+f3：<br>
+x=4<br>
+return 16
+</div>
+
 ### 例2
 ```python
 def id(x):
   return x
 print id(id)(id(13))
 ```
-
 调用顺序：
-   1. **id(id)**(id(13))
-   2. id(**id(13)**)
-   3. **id(13)**
-   
-环境图表：
+   1. **id(id)**(id(13)) f1
+   2. id(**id(13)**) f2
+   3. **id(13)** f3
 
-// todo::看看要怎么画图表
+<div style="border: 1px solid #eee; padding: 10px; margin: 10px 0;">
+全局：<br>
+id -> def id(x) 全局
+
+f1：<br>
+x=id<br>
+return id
+
+f2：<br>
+x=13<br>
+return 13
+
+f3：<br>
+x=13<br>
+return 13
+</div>
 
 
 ### 例3
@@ -39,6 +70,20 @@ print(incr(5)(6))
 g = incr(5)
 print(g(6))
 ```
+
+<div style="border: 1px solid #eee; padding: 10px; margin: 10px 0;">
+全局：<br>
+incr -> def incr(n) 全局
+
+f1：<br>
+n=5<br>
+f -> def f(x) f1<br>
+return f
+
+f2：<br>
+x=6<br>
+return n+x=5+6=11(n来源f1，因为f2环境的父级是定义func f的f1环境)
+</div>
 
 ## Control 流程控制
 ```python
