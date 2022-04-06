@@ -1,28 +1,49 @@
 # 04 Higher Order Functions 高阶函数
 
+## 额外内容
 
-测试：
-```shell
+### 测试
+
+```console
 python -m doctest -v xxx.py
 ```
 
-doc comment 文档注释 - 测试
+### 文档注释 Doc Comment
+可用于解释说明<br>
+也可以用于测试
 
-先写出注释和测试， 逐步测试可行 测试驱动开发
+```python
+def add(x, y):
+    """ 
+    将两数相加
+    >>> add(3,4)
+    7
+    >>> add(1, -1)
+    0
+    """
+    return x+y
+```
+测试驱动开发：先写出注释和测试，再编写代码，逐步测试可行
 
 
-迭代
+## 迭代
+例子： 03.py => is_prime
 
-**课程中的same_length代码是不是有问题，如果//整除是四舍五入，确认一下。比如数字是999=>//=>100而不是99**
-
+## 函数设计
 
 设计原则：
-1. Functions should do one well-defined thing.
-2. DRY Don't Repeat Yourself
+1. Functions should do one well-defined thing. 做**一件**明确地事
+2. DRY Don't Repeat Yourself 避免重复代码（same_length）
 
-Functions As Template 函数作为计算模板
+## 高阶函数 Higher Order Functions
 
-Functions on Functions 函数传入函数参数
+> Higher Order Functions: functions that take fucntions and return functions.
+> 
+> 高阶函数：一个函数接受函数并返回函数
+
+### Functions As Template 函数作为计算模板
+
+### Functions on Functions 函数传入函数参数
 ```python
 def summation(N, term):
     k = 1
@@ -40,7 +61,7 @@ summation(10, lambda x: 1 / x)
 summation(10, lambda k: x**(k-1) / factorial(k-1)) # Approximate e**x
 ```
 
-Functions that Produce Functions (return functions) 函数返回函数
+### Functions that Produce Functions (return functions) 函数返回函数
 ```python
 def add_func(f, g): # higher order functions 高阶函数
     """Return function that return F(x)+G(x) for argument x."""
@@ -52,7 +73,3 @@ from math import sin, cos, pi
 h = add_func(sin, cos)
 h(pi / 4)
 ```
-
-> Higher Order Functions: functions that take fucntions and return functions.
-> 
-> 高阶函数：一个函数接受函数并返回函数
