@@ -29,6 +29,13 @@ def add(x, y):
 ## 迭代
 例子： 03.py => is_prime
 
+## 术语
+domain: 函数输入值的集合<br>
+range: 函数返回值的集合<br>
+codomain: domain, range
+
+square => domain: 实数、range: 非负实数、codomain: 实数或非负实数
+
 ## 函数设计
 
 设计原则：
