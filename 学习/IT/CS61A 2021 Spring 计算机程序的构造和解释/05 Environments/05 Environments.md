@@ -116,3 +116,28 @@ print(f(3))
 # print 3
 # 注意：如果用js类比，需要注意其中的区别。js中使用var x = y在g(y)中重新定义一个x变量，则与该python代码运行一致。但是如果使用的是x = y这样的语句，那么x将指向f(x)环境中的x，g(y)中对x的修改，将影响到f(x)中x的值，运行结果将是return 4。
 ```
+
+9
+```python
+def print_sums(n):
+    print(n)
+    def next_sum(k):
+        return print_sums(n+k)
+    return next_sum
+
+print_sums(1)(3)(5)
+# print 1 4 9
+```
+
+10
+```python
+# currying
+def curry2(f):
+    return lambda x: \
+        lambda y: \
+            f(x, y)
+
+from operator import add
+print(curry2(add)(30)(12)) # print 30 + 12 => 42
+print(curry2(add)(30)) # print function value
+```
