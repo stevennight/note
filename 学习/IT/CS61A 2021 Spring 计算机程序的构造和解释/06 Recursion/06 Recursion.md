@@ -40,13 +40,15 @@ print(sum_squares(3))
 调用方法、库，要着眼于文档（如何使用）而不是具体实现。
 
 ### 预防无限递归
+“最小”值
 
 ### Induction 归纳法
-①基本情况成立 p(b)成立
-②前一个数成立 p(k - 1)成立，k>b
+①基本条件 p(b)成立
+②假设p(k)成立，推导前一个数成立 p(k - 1)成立，k>b
 ③p(k) k>=b成立
 
 Noetherian induction / well-founded induction
+https://zh.wikipedia.org/wiki/%E8%89%AF%E5%9F%BA%E5%85%B3%E7%B3%BB
 
 ### Recursion and Induction
 递归是一种归纳法：

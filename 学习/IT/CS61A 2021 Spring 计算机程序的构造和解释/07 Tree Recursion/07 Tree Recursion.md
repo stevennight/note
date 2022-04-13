@@ -73,6 +73,10 @@ def partition(n, k):
 partition(6, 3)
 ```
 
+每步划分为：<br/>
+取k partition(n-k, k)<br/>
+不取k partition(n, k-1)
+
 ## Recurrences
 
 
