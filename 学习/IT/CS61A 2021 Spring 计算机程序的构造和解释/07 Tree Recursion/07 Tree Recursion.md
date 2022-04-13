@@ -79,4 +79,22 @@ partition(6, 3)
 
 ## Recurrences
 
+## The Towers of Hanoi 汉诺塔（树形递归）
+```python
+def move_tower(n, start_peg, end_peg):
+    """Perform moves that transfer an ordered tower of N > 0 disks in the 
+    Towers of Hanoi puzzle from peg START_PEG to peg END_PEG, where
+    1 <= START_PEG, END_PEG <= 3, and START_PEG != END_PEG.
+    Assumes the disks to be moved are all smaller than those on the other 
+    pegs."""
 
+    ## exception for 不遵循输入规则
+    ## lecture 8
+
+    if n == 1:
+        #...
+    else:
+        # ...
+        # 1 + 2 + 3 - start - end = 空余柱子编号
+        spare_peg = 6- start_peg - end_peg 
+        # 可以看看课程源码他是怎么在控制台中输出 字符图像 过程的。
