@@ -1,6 +1,6 @@
 # 08 More on Functions
 
-## Exceptions
+## Exceptions 异常
 ```python
 if N < 0:
     # raise 语句
@@ -15,8 +15,8 @@ except FileNotFoundError:
     input = ""
 ```
 
+## 练习
 P.S. 写一个方法，第一步是什么？ - 说明文档，最好能放几个例子（或者python的测试断言）
-
 ```python
 # 可用stirl 斯特林公式（？）非常简单
 def remove_digit(n, digit):
