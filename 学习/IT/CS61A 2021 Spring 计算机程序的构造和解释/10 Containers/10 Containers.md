@@ -4,20 +4,20 @@
 ```python
 # 整数表示对
 def pair(a, b):
-    """返回一对非负整数（A, B）"""
+    """返回一对非负整数（A, B） 2和3是质数，利用质数性质。"""
     return 2**a * 3**b
 
 def left(p):
-    return multiplicity(2, p)
+    return multiplicty(2, p)
 def right(p):
-    return multiplicity(3, p)
+    return multiplicty(3, p)
 def multiplicty(factor, n):
     """假设factor, n是整数，factor > 1。返回n可以被factor整除的次数。"""
     # 实现
     # 待运行看看对不对。
-    if n % 3 != 0:
+    if n % factor != 0:
         return 0
-    return 1 + multiplicty(factor, n / 3)
+    return 1 + multiplicty(factor, n / factor)
 
 
 # 通过函数表示对
@@ -41,7 +41,7 @@ def set_right(p, v):
 
 def pair(a, b):
     def pair_func(which, v=None):
-        nonlocal a, b # 赋值可以赋值到父级框架中的变量。【很少用】 应该就类似php的global了吧（但是php的global应该是全局框架而不是父级？待确定）
+        nonlocal a, b # 赋值可以赋值到父级框架中的变量。【很少用】
         if which == 0:
             return a
         elif which == 1:

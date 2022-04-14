@@ -18,3 +18,4 @@ https://www.mcatin.com/course/11
 
 ### 第十课
 1. tuple 看起来与??相似 混乱？
+2. nonlocal 是否等于php global? 主要是php global是不是取父级框架呢，还是只是指全局global框架呢？ line 44
