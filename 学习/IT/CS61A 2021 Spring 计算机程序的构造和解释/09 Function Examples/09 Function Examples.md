@@ -69,3 +69,21 @@ Page 5
 # 变量交换
 flip, flop = flop, flip
 ```
+
+## Tracing 跟踪
+```python
+# ↓高阶函数
+def trace1(f):
+    def traced(x):
+        print("->", x)
+        r = f(x)
+        print("<-", r)
+        return r
+    return traced
+
+# decorators 装饰器
+# 下面square可以理解为 square = trace1(square)
+@trace1
+def square(x):
+    # ...
+```

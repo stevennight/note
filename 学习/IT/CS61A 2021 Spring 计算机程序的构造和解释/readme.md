@@ -15,3 +15,6 @@ https://www.mcatin.com/course/11
 
 ### 第八课：
 1. remove_digit stirl 斯特林公式
+
+### 第十课
+1. tuple 看起来与??相似 混乱？
