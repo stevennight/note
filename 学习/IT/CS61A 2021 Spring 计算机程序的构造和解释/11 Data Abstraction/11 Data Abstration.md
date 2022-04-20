@@ -133,3 +133,15 @@ def extra_harmonic_number(n):
 ```
 
 用户不需要知道数据的组织方式， 各种的运算实现。
+
+### 抽象层
+
+| 层级 | 值 |
+| ---- | ---- |
+|Primitive|1,2,3,True,False
+|Representation|(...,...) [..,..]|
+|Data Abstraction|make_rate(),numer(),denom(),add_rate()...|
+|User Program|exact_harmonic_number()|
+
+Python类型：
+integer, boolean, function, string, tuple, range, list
