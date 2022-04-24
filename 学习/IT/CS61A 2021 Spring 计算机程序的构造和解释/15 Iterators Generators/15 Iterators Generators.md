@@ -103,3 +103,9 @@ def a_then_b(a, b):
 
 ### 树的遍历生成器
 p29
+```python
+def leaves(t):
+    yield label(t)
+    for c in branches(t):
+        yield from leaves(c)
+```
