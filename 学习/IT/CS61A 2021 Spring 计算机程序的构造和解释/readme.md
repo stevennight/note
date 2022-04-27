@@ -38,3 +38,6 @@ https://www.mcatin.com/course/11
 ### 第十九课
 1. Linked List链表
 2. Adding to an ordered linked list 添加到有序链表
+
+### 第二十课
+1. 数学 函数  复杂度 TAT
