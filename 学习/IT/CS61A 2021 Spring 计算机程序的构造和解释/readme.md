@@ -41,3 +41,7 @@ https://www.mcatin.com/course/11
 
 ### 第二十课
 1. 数学 函数  复杂度 TAT
+
+### 第二十一课
+1. 练习 fib, count_change()
+2. 看一下动态规划
