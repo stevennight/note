@@ -60,3 +60,18 @@
 ```
 
 > Tree Recursions 创建新树 label-doubling 实验
+
+```scheme
+(define (tree label children) (cons label children))
+(define (label tr) (car tr))
+(define (children tr) (cdr tr))
+(define (is-leaf tr) (null? (cdr tr)))
+
+; 自己写的 -w- ⭐↓但是这样就不是尾递归。
+; 从树顶开始好像没有办法构造树，树是要有children先呀？一开始只有个顶，没有子树则念儿去掉tree()呢，如果是要尾递归的话。
+(define (double tr)
+    (if (is-leaf tr) (tree (* 2 (label tr)) '[])
+        (tree (* 2 (label tr)) (doubel (children tr)))
+    )
+)
+```
