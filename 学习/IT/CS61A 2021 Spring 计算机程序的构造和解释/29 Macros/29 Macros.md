@@ -2,6 +2,12 @@
 
 设置一个名称，将名称部分替换为指定的值。
 
+完整版scheme有一个define-syntax
+
+define-macro:
+1. 定义如同函数，但不计算它的参数
+2. 不返回值，返回需要调用的表达式，需要进行一次eval()    返回结果。
+
 ### Quasiquote
 ```scheme
 (list 'a 'b (+ 2 3 'd)) ; (a b 5 d)
@@ -32,10 +38,10 @@
 ;3
 (for-range x 1 5 (* x x)) ; (1 4 8 16 25) Like [ x*x for x in range(1, 6) ]
 (define-macro (for-range control-var low high body)
-    ; 这里保存了low，保证只计算一次   low碰巧有副作用的函数就不好了(?)
+    ; 这里保存了low，保证只计算一次  否则$low$换成low会计算多次。 特别是遇到有副作用的函数。
     `(let (($low$ ,low))
         (define ($loop$ $so-far$ ,control-var)
-            (if (< ,control-var $low) $so-far$
+            (if (< ,control-var $low$) $so-far$
                 ($loop$ (cons ,body $so-far$) (- ,control-var 1))
             )
         )
