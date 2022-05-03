@@ -11,6 +11,7 @@ https://www.mcatin.com/course/11
 1. Hogs
 2. Cats
 3. Ant
+4. Scheme
 
 ## 需回顾：
 ### 第六课：
@@ -59,3 +60,9 @@ https://www.mcatin.com/course/11
 3. 动态作用域？
 4. scheme let？
 5. 实现？
+
+### 第二十八课
+1. 证明相关
+2. 可能需要重新看
+3. 由于这里不算重点，可以往后再继续了解
+4. 懵。
