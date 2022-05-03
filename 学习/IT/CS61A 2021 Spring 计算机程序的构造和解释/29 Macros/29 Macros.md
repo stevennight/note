@@ -8,6 +8,8 @@ define-macro:
 1. 定义如同函数，但不计算它的参数
 2. 不返回值，返回需要调用的表达式，需要进行一次eval()    返回结果。
 
+define-macro 受 code.cs61a.org 支持。
+
 ### Quasiquote
 ```scheme
 (list 'a 'b (+ 2 3 'd)) ; (a b 5 d)
