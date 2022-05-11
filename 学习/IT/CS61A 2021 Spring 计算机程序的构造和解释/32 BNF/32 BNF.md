@@ -94,3 +94,80 @@ nest: "(" ")" | "(" nest ")"
 | item+ | 1或多个 | items: item \| items item |
 | [ item ] | 可选项 | opt_item:  \| item |
 | item? | 同上 | 同上 |
+
+```BNF
+name: /\w+/
+number: /\d+/
+list: ( name  | number )+
+numbered_list: ( name [ ":" number ] )+
+comma_separated_list: [ name ("," name)* ]
+```
+
+## Caculator
+```BNF
+start: calc_expr
+// ? 只有一个子树，在语法树上省略，具体参见语法树
+?calc_expr: NUMBER | calc_op
+calc_op: "(" OPERATOR calc_expr* ")"
+OPERATOR: "+" | "-" | "*" | "/"
+%ignore /\s+/
+// Lark库
+$import common.Number
+```
+
+## Syntax Tree
+
+Calculator Tree:
+
+![计算器的语法树](https://file.nyatori.com/images/39e6073e822656e82345040b3cff2661.png)
+
+1. 规则 -> 非终结符 -> 树的节点(node)，子节点是token或者树（规则）
+1. 叶子节点没有子节点并且是终结符（token）
+1. Lark默认会移除 字符串，保留命名的token(NUMBER)以及正则定义的token
+1. 规则以?开头并且只有一个子节点的会被移除（calc_expr）
+1. abstract syntax tree
+
+## Evaluation
+```python
+from Lark import Transformer
+class Eval(Transformer):
+    def start(self, args):
+        return args[0]
+    def calc_op(self, args):
+        op = args[0]
+        if op == '+':
+            return sum(args[1:])
+        elif op == '-':
+            # ...
+    def NUMBER(self, num):
+        return float(num)
+
+evaluator = Eval()
+print(evaluator.transform(tree))
+```
+
+## Ambiguity 歧义
+与正则表达式类似
+
+```BNF
+?start: expr
+?expr: NUMBER | expr OPERATOR expr
+OPERATOR: "+" | "-" | "*" | "/"
+```
+
+`3+7*2`的树：
+
+![](https://file.nyatori.com/images/05897b0b540a80fafba6b18980111c3e.png)
+
+消除歧义：
+```BNF
+// 经典
+?start: expr
+?expr: ?add_expr
+?add_expr: mul_expr | add_expr ADDOP mul_expr
+?mul_expr: NUMBER | mul_expr MULOP NUMBER
+ADDOP: "+" | "-"
+MULOP: "*" | "/"
+```
+
+![](https://file.nyatori.com/images/2487f0f7c3a812f78ee1d65c832db89c.png)

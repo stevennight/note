@@ -1,6 +1,6 @@
 # 31 Regular Expressions 正则表达式
 
-声明式编程
+声明式编程 (声明式匹配文本)
 
 ## Pattern Matching 模式匹配
 声明要找的东西，让库区弄清楚如何找到它。
