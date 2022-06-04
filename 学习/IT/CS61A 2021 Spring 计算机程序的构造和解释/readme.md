@@ -79,3 +79,8 @@ https://www.bilibili.com/video/BV1v64y1Q78o
 1. 练习
 1. 消除歧义
 1. 语言文档的BNF？
+
+### 第三十六课
+1. review 练习
+2. intersperse list(ⅡⅢ)
+3. binary tree(isIn, add)
