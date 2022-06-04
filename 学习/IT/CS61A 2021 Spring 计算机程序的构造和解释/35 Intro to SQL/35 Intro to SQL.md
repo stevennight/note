@@ -18,12 +18,63 @@ user, badges, user_badges(两个表id关联)<br />
 是一种声明式编程语言。
 
 注：课程中使用SQLite来说明。可能与MySQL等其他数据库不一样。
+其他数据库：MySQL, PostGreSQL. BigQuery【数据分析】
 ```sql
 CREATE TABLE users (id INTEGER PRIMARY KEY, nickname TEXT, location TEXT);
 
 INSERT INTO users VALUES (1, "Sal", "California");
 INSERT INTO users (nickname, location) VALUES ("John", "NY");
 
+UPDATE users SET nickname = "Joan" WHERE id = 2;
+
+DELETE FROM users WHERE id = 2;
+
 SELECT * FROM users;
 SELECT * FROM users ORDER BY nickname ASC;
+SELECT nickname FROM users;
+SELECT * FROM users WHERE nickname = "John" AND location = "California";
+
+/* 聚合 */
+CREATE TABLE groceries (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER);
+INSERT INTO groceries VALUES (1, "Bananas", 56, 7);
+
+SELECT MAX(quantity), name, aisle FROM groceries;
+SELECT MIN(quantity), name, aisle FROM groceries;
+SELECT AVG(quantity) FROM groceries;
+SELECT SUM(quantity) FROM groceries;
+SELECT COUNT(*) FROM groceries;
+
+SELECT SUM(quantity), aisle FROM groceries GROUP BY aisle;
+
+/* Join */
+SELECT * FROM students;
+SELECT * FROM student_projects;
+
+SELECT first_name, last_name, title FROM students
+    JOIN student_projects ON students.id = student_projects.student_id;
+SELECT first_name, last_name, title FROM students
+    LEFT OUTER JOIN student_projects ON students.id = student_projects.student_id;
 ```
+
+### SQL用途
+1. 应用程序数据存储
+2. 数据分析
+
+### 事务
+```sql
+BEGIN;
+
+UPDATE products SET quantity = quantity - 1 WHERE id = 1;
+
+INSERT INTO orders (customer, product_id) VALUES ("Animesh", 1);
+
+COMMIT;
+```
+
+## Python Web开发
+ORM对象关系管理器：ORM object relational manager 开发通常不直接写SQL。
+直接SQL要注意SQL注入(SQL Injection)。
+
+框架 Flask
+
+装饰器 decorator @app.route 处理网址路径
