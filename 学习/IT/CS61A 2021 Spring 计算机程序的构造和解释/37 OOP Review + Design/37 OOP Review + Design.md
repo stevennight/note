@@ -67,5 +67,95 @@ def int_smash(num1, num2):
     return int(num1) * 10 ** len((str(int(num2)))) + int(num2)
 
 # Polymorphism(Type Dispatching):
-# 类型分派：函数
+# 类型分派：函数检查传参类型，选择合适的行为
+def print_obj(obj):
+    if hasattr(obj, "__iter__"):
+        for item in obj:
+            print(item)
+    else:
+        print(obj)
+
+print_obj([1, 2, 3])
+print_obj(123)
+
+def display_first(data):
+    if isinstance(data, Link):
+        print(data.first)
+    elif isinstance(data, Tree):
+        print(data.label)
+    else:
+        raise Error("Unsupported data type!")
+display_first(Link(1, Link(2, Link(3))))
+display_first(Tree("A", [Tree("B", Tree("C"))]))
+```
+
+## Design Principles 设计原则
+
+## Easy Construction
+```python
+class LinkedList:
+    def __init__(self, values):
+        self.head = link = Link(None) # self.head => 哨兵节点
+        for value in values:
+            link.rest = Link(value)
+            link = link.rest
+
+    def __iter__(self):
+        link = self.head.rest
+        while link is not Link.empty:
+            yield link
+            link = link.rest
+
+lnk = LinkedList([1, 2, 3, 4])
+for link in lnk:
+    print(link.first)
+```
+
+## Set Boundaries
+```python
+class Insect:
+    def __init__(self):
+        self.__health = 100 # => 被python重写成 __classname__attrname，保护实例变量。
+        self.__perished = False
+
+    def reduct_health(self, amount):
+        self.__health -= amount
+        # 边界
+        if self.__health <= 0:
+            print("Ohno! I have perished")
+            self.__perished = true
+
+class Ant(Insect):
+    pass
+
+class BumbleBee(Insect):
+    def avenge_bee_deaths(self, ant):
+        # ant.__health -= 1000 # Error, AttributeError.
+        ant.reduct_health(1000)
+```
+
+## Check Your Assumptions
+```python
+# before
+class Person:
+    def __init__(self, first_name, middle_name, last_name):
+        self.first_name = first_name
+        self.middle_name = middle_name
+        self.last_name = last_name
+
+    def __str__(self):
+        return f"{self.last_name}, {self.first_name} {self.middle_name[0]}."
+
+# after
+class Person:
+    def __init__(self, family_name, given_name, family_first=True):
+        self.family_name = family_name
+        self.given_name = given_name
+        self.family_first = family_first
+
+    def __str__(self):
+        if self.family_first:
+            return f"{self.family_name}, {self.given_name}"
+        else:
+            return f"{self.given_name} {self.family_name}"
 ```

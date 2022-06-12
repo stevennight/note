@@ -84,3 +84,6 @@ https://www.bilibili.com/video/BV1v64y1Q78o
 1. review 练习
 2. intersperse list(ⅡⅢ)
 3. binary tree(isIn, add)
+
+### 第三十七课
+1. 可以看一下一些额外的文档，关于一些猜想（如人、学生的实例等）
