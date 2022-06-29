@@ -1,0 +1,25 @@
+# 01 引入
+
+以往：
+- Hadpoo Shdfs 文件存储
+- Hbase ? 文件索引
+- Spark ? ? 分析计算
+- ES ? ? 检索
+- ? 任务调度
+- ? ETL
+
+最强OLAP引擎 clickhouse
+
+clickhouse:独立，可以作为海量数据的存储、计算、统一的数据仓库
+
+MySQL,MQ,Hadpoo,Es数据源消息数据，可以统一到clickhouse。
+
+## 课程的流程
+1. clickhouse 简介：特点、适用场景。
+1. clickhouse 使用：主要以单机来说明。单机性能强。
+1. clickhouse 使用中的问题：
+    1. 集群机制
+    1. 配置优化
+    1. 查询优化
+    1. 生产常见问题
+    1. 总结
