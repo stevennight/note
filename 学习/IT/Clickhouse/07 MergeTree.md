@@ -41,10 +41,10 @@ select x+y from t_null;
 ```sql
 # 示例
 create table t_stock (
-	id UInt32,
-	sku_id String,
-	total_amount Decimal(16,2),
-	create_time Datetime
+ id UInt32,
+ sku_id String,
+ total_amount Decimal(16,2),
+ create_time Datetime
 ) engine=MergeTree()
 partition by toYYYYMMDD(create_time)
 primary key (id)
@@ -97,9 +97,7 @@ optimize table t_stock final;
 
 稀疏索引，按照索引粒度（index granularity）划分分区，官方默认值：8192
 
-<span style="color: gold">
-待确定：在一级索引下，建立 跳数索引（跳跃表），可进一步加快
-</span>
+$\color{Gold}{待确定：在一级索引下，建立 跳数索引（跳跃表），可进一步加快}$
 
 ### 二级索引
 
